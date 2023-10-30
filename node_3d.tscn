@@ -82,7 +82,7 @@ skeleton = NodePath("../..")
 shape = SubResource("ConcavePolygonShape3D_wtbte")
 
 [node name="island2" type="MeshInstance3D" parent="islands"]
-transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 3.65752, 58.1465)
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 200, 400, 0)
 mesh = SubResource("BoxMesh_3sk5y")
 skeleton = NodePath("../..")
 
@@ -92,7 +92,7 @@ skeleton = NodePath("../..")
 shape = SubResource("ConcavePolygonShape3D_wtbte")
 
 [node name="island3" type="MeshInstance3D" parent="islands"]
-transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 3.65752, 58.1465)
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 400, -200)
 mesh = SubResource("BoxMesh_3sk5y")
 skeleton = NodePath("../..")
 
@@ -102,7 +102,7 @@ skeleton = NodePath("../..")
 shape = SubResource("ConcavePolygonShape3D_wtbte")
 
 [node name="island4" type="MeshInstance3D" parent="islands"]
-transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 3.65752, 58.1465)
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 400, 200)
 mesh = SubResource("BoxMesh_3sk5y")
 skeleton = NodePath("../..")
 
