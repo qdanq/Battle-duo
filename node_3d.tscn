@@ -55,10 +55,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_p68qw")
 shape = SubResource("ConcavePolygonShape3D_ldb7j")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6295, 467.286, 26.9511)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6295, 451.098, 15.7209)
 script = ExtResource("1_72tsf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.383804, -7.59711, 2.51682)
 mesh = SubResource("CapsuleMesh_78ryg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
