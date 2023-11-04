@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://br6kftxrfdepx"]
+[gd_scene load_steps=11 format=3 uid="uid://br6kftxrfdepx"]
 
 [ext_resource type="Script" path="res://CharacterBody3D.gd" id="1_72tsf"]
 [ext_resource type="ArrayMesh" uid="uid://d0avvy2jnc0wr" path="res://models/island1-4.obj" id="2_x2otq"]
@@ -20,10 +20,7 @@ glow_enabled = true
 size = Vector2(20, 20)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p68qw"]
-albedo_color = Color(0, 0.745098, 1, 1)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ldb7j"]
-data = PackedVector3Array(10, 0, 10, -10, 0, 10, 10, 0, -10, -10, 0, 10, -10, 0, -10, 10, 0, -10)
+albedo_color = Color(0.113725, 0.635294, 0.847059, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_78ryg"]
 
@@ -47,11 +44,6 @@ shadow_enabled = true
 transform = Transform3D(86.7514, 0, -122.369, 0, 150, 0, 122.369, 0, 86.7514, 1.61822, 0, 0)
 mesh = SubResource("PlaneMesh_5o51y")
 surface_material_override/0 = SubResource("StandardMaterial3D_p68qw")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="plane"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="plane/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_ldb7j")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -238.466, 148.612, 23.3636)
