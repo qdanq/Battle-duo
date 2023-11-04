@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://br6kftxrfdepx"]
+[gd_scene load_steps=13 format=3 uid="uid://br6kftxrfdepx"]
 
 [ext_resource type="Script" path="res://CharacterBody3D.gd" id="1_72tsf"]
+[ext_resource type="ArrayMesh" uid="uid://d0avvy2jnc0wr" path="res://models/island1-4.obj" id="2_x2otq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3k385"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -55,11 +56,10 @@ surface_material_override/0 = SubResource("StandardMaterial3D_p68qw")
 shape = SubResource("ConcavePolygonShape3D_ldb7j")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6295, 451.098, 15.7209)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -238.466, 148.612, 23.3636)
 script = ExtResource("1_72tsf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.383804, -7.59711, 2.51682)
 mesh = SubResource("CapsuleMesh_78ryg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
@@ -71,16 +71,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.521295, 0)
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Neck"]
 
 [node name="islands" type="Node3D" parent="."]
-
-[node name="island1" type="MeshInstance3D" parent="islands"]
-transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -200.374, 400, -0.546127)
-mesh = SubResource("BoxMesh_3sk5y")
-skeleton = NodePath("../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="islands/island1"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="islands/island1/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_wtbte")
 
 [node name="island2" type="MeshInstance3D" parent="islands"]
 transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 200, 400, 0)
@@ -121,3 +111,7 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="islands/island5/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wtbte")
+
+[node name="Island1-4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.868241, 0, -4.92404, 0, 5, 0, 4.92404, 0, 0.868241, -200.374, 113.81, -0.546)
+mesh = ExtResource("2_x2otq")
