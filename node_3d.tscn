@@ -48,6 +48,10 @@ environment = SubResource("Environment_uc6qs")
 transform = Transform3D(0.177194, 0.780612, -0.599373, 0.357039, 0.516535, 0.778277, 0.917129, -0.351905, -0.187182, -4.21936, 3.44312, 0)
 shadow_enabled = true
 
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.177194, 0.780612, -0.599373, 0.357039, 0.516535, 0.778277, 0.917129, -0.351905, -0.187182, -4.21936, 3.44312, 0)
+shadow_enabled = true
+
 [node name="plane" type="MeshInstance3D" parent="."]
 transform = Transform3D(86.7514, 0, -122.369, 0, 150, 0, 122.369, 0, 86.7514, 1.61822, 0, 0)
 mesh = SubResource("PlaneMesh_5o51y")
