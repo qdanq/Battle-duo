@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=3 uid="uid://br6kftxrfdepx"]
 
 [ext_resource type="Script" path="res://CharacterBody3D.gd" id="1_72tsf"]
-[ext_resource type="ArrayMesh" uid="uid://d0avvy2jnc0wr" path="res://models/island1-4.obj" id="2_x2otq"]
-[ext_resource type="ArrayMesh" uid="uid://dq3kgwiodkw2f" path="res://models/island5.obj" id="3_ox0f7"]
-[ext_resource type="Texture2D" uid="uid://cdjy5tw7tr25t" path="res://models/island5.png" id="3_qtokg"]
+[ext_resource type="ArrayMesh" uid="uid://d0avvy2jnc0wr" path="res://models/maps/island1-4.obj" id="2_x2otq"]
+[ext_resource type="ArrayMesh" uid="uid://dq3kgwiodkw2f" path="res://models/maps/island5.obj" id="3_ox0f7"]
+[ext_resource type="Texture2D" uid="uid://cdjy5tw7tr25t" path="res://models/maps/island5.png" id="3_qtokg"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3k385"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
