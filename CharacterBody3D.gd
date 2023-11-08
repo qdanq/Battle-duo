@@ -9,6 +9,9 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var neck := $Neck 
 @onready var camera := $Neck/Camera3D
 
+func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
