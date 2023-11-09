@@ -1,22 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://br6kftxrfdepx"]
+[gd_scene load_steps=12 format=3 uid="uid://br6kftxrfdepx"]
 
 [ext_resource type="Script" path="res://CharacterBody3D.gd" id="1_72tsf"]
 [ext_resource type="ArrayMesh" uid="uid://d0avvy2jnc0wr" path="res://models/maps/island1-4.obj" id="2_x2otq"]
 [ext_resource type="ArrayMesh" uid="uid://dq3kgwiodkw2f" path="res://models/maps/island5.obj" id="3_ox0f7"]
 [ext_resource type="Texture2D" uid="uid://cdjy5tw7tr25t" path="res://models/maps/island5.png" id="3_qtokg"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3k385"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_l4pbo"]
-sky_material = SubResource("ProceduralSkyMaterial_3k385")
-
-[sub_resource type="Environment" id="Environment_uc6qs"]
-background_mode = 2
-sky = SubResource("Sky_l4pbo")
-tonemap_mode = 2
-glow_enabled = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_5o51y"]
 size = Vector2(20, 20)
@@ -40,17 +27,6 @@ data = PackedVector3Array(-4.3, -3.4, 1.4, -4.3, -3.3, 1.4, -4.3, -3.4, 2.5, -4.
 
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0934982, 0, 0.211515)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_uc6qs")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.177194, 0.780612, -0.599373, 0.357039, 0.516535, 0.778277, 0.917129, -0.351905, -0.187182, -4.21936, 3.44312, 0)
-shadow_enabled = true
-
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.177194, 0.780612, -0.599373, 0.357039, 0.516535, 0.778277, 0.917129, -0.351905, -0.187182, -4.21936, 3.44312, 0)
-shadow_enabled = true
 
 [node name="plane" type="MeshInstance3D" parent="."]
 transform = Transform3D(86.7514, 0, -122.369, 0, 150, 0, 122.369, 0, 86.7514, 1.61822, 0, 0)
