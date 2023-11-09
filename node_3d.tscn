@@ -35,6 +35,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_p68qw")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -238.466, 148.612, 23.3636)
+collision_layer = 2
 script = ExtResource("1_72tsf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]

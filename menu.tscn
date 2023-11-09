@@ -27,7 +27,6 @@ shadow_enabled = true
 environment = SubResource("Environment_0ws5n")
 
 [node name="Node3D" parent="." instance=ExtResource("1_sos6o")]
-visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
