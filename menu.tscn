@@ -8,9 +8,13 @@
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 394.0
+offset_top = 227.0
+offset_right = -396.0
+offset_bottom = -227.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.997055, 1)
+scale = Vector2(0.998357, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MainMenu"]
 layout_mode = 2
