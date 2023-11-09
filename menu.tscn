@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bw3omtnxxns6a"]
+[gd_scene load_steps=7 format=3 uid="uid://bw3omtnxxns6a"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_exm1j"]
 [ext_resource type="PackedScene" uid="uid://br6kftxrfdepx" path="res://node_3d.tscn" id="1_sos6o"]
+[ext_resource type="PackedScene" uid="uid://2rtnxadvyk3k" path="res://character_body_3d.tscn" id="3_056m6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dskq"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -71,6 +72,11 @@ text = "Join"
 layout_mode = 2
 placeholder_text = "Enter address to join"
 alignment = 1
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath("..")
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("3_056m6")]
 
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]

@@ -7,9 +7,6 @@ const Game = preload("res://node_3d.tscn")
 const PORT = 9999
 var enet_peer = ENetMultiplayerPeer.new()
 
-func _unhandled_input(event):
-	if Input.is_action_just_pressed("quit"):
-		get_tree().quit()
 		
 func _on_host_button_pressed():
 	main_menu.hide()
