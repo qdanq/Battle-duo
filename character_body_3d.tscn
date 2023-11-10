@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://2rtnxadvyk3k"]
+[gd_scene load_steps=11 format=3 uid="uid://2rtnxadvyk3k"]
 
 [ext_resource type="Script" path="res://CharacterBody3D.gd" id="1_xdui1"]
 [ext_resource type="ArrayMesh" uid="uid://cgfgjy6x2ju1e" path="res://models/weapons/automatic_rifle.obj" id="2_2exa4"]
@@ -107,11 +107,41 @@ tracks/1/keys = {
 "values": []
 }
 
+[sub_resource type="Animation" id="Animation_mfles"]
+resource_name = "shoot"
+length = 0.1
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Neck/Camera3D/AutomaticRifle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector3(1.905, -2.443, -0.203), Vector3(1.905, -2.443, -0.223)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Neck/Camera3D/AutomaticRifle:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [Vector3(0.0174533, -0.0174533, 0), Vector3(0, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_47j04"]
 _data = {
 "RESET": SubResource("Animation_lsjur"),
 "idle": SubResource("Animation_1e356"),
-"move": SubResource("Animation_wr0j7")
+"move": SubResource("Animation_wr0j7"),
+"shoot": SubResource("Animation_mfles")
 }
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
