@@ -8,6 +8,7 @@ const JUMP_VELOCITY = 8.0
 var gravity = 20.0
 @onready var neck := $Neck 
 @onready var camera := $Neck/Camera3D
+@onready var anim_player := $AnimationPlayer
 
 func _enter_tree():
 	set_multiplayer_authority(str(name).to_int())
@@ -51,5 +52,10 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+		
+	if input_dir != Vector2.ZERO and is_on_floor():
+		anim_player.play("move")
+	else:
+		anim_player.play("idle")
 
 	move_and_slide()
