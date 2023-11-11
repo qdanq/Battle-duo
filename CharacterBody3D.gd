@@ -10,6 +10,7 @@ var gravity = 20.0
 @onready var camera := $Neck/Camera3D
 @onready var guncam := $Neck/Camera3D/SubViewportContainer/SubViewport/Guncam
 @onready var anim_player := $AnimationPlayer
+@onready var muzzle_flash := $Neck/Camera3D/AutomaticRifle/MuzzleFlash
 
 func _enter_tree():
 	set_multiplayer_authority(str(name).to_int())
@@ -32,9 +33,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			neck.rotate_y(-event.relative.x * 0.01)
 			camera.rotate_x(-event.relative.y * 0.01)
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
-			
-	
-		
+
 
 func _process(delta):
 	guncam.global_transform = camera.global_transform
@@ -74,6 +73,8 @@ func _physics_process(delta):
 func play_shoot_effects():
 	if Input.is_action_pressed("shoot"):
 		anim_player.play("shoot")
+		muzzle_flash.restart()
+		muzzle_flash.emitting = true
 	else:
 		anim_player.stop()
 	
