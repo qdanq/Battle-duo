@@ -33,9 +33,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			camera.rotate_x(-event.relative.y * 0.01)
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 			
-	if Input.is_action_just_pressed("shoot") \
-	and anim_player.current_animation != "shoot":
-		play_shoot_effects()	
+	
 		
 
 func _process(delta):
@@ -47,6 +45,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
+	play_shoot_effects()
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -73,6 +72,8 @@ func _physics_process(delta):
 	move_and_slide()
 
 func play_shoot_effects():
-	anim_player.stop()
-	anim_player.play("shoot")
+	if Input.is_action_pressed("shoot"):
+		anim_player.play("shoot")
+	else:
+		anim_player.stop()
 	
