@@ -32,6 +32,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			neck.rotate_y(-event.relative.x * 0.01)
 			camera.rotate_x(-event.relative.y * 0.01)
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
+			
+	if Input.is_action_just_pressed("shoot") \
+	and anim_player.current_animation != "shoot":
+		play_shoot_effects()	
+		
 
 func _process(delta):
 	guncam.global_transform = camera.global_transform
@@ -57,9 +62,17 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 		
-	if input_dir != Vector2.ZERO and is_on_floor():
+	if anim_player.current_animation == "shoot":
+		pass
+		
+	elif input_dir != Vector2.ZERO and is_on_floor():
 		anim_player.play("move")
 	else:
 		anim_player.play("idle")
 
 	move_and_slide()
+
+func play_shoot_effects():
+	anim_player.stop()
+	anim_player.play("shoot")
+	
