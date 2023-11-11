@@ -8,6 +8,7 @@ const JUMP_VELOCITY = 8.0
 var gravity = 20.0
 @onready var neck := $Neck 
 @onready var camera := $Neck/Camera3D
+@onready var guncam := $Neck/Camera3D/SubViewportContainer/SubViewport/Guncam
 @onready var anim_player := $AnimationPlayer
 
 func _enter_tree():
@@ -31,6 +32,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			neck.rotate_y(-event.relative.x * 0.01)
 			camera.rotate_x(-event.relative.y * 0.01)
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
+
+func _process(delta):
+	guncam.global_transform = camera.global_transform
 
 func _physics_process(delta):
 	if not is_multiplayer_authority(): return
