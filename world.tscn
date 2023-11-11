@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxd8fu4lw006n"]
+[gd_scene load_steps=7 format=3 uid="uid://dxd8fu4lw006n"]
 
 [ext_resource type="PackedScene" uid="uid://ce5wqnn3o5gfi" path="res://4islandsmap.tscn" id="1_4hc7d"]
+[ext_resource type="Script" path="res://world.gd" id="1_6g01w"]
+[ext_resource type="PackedScene" uid="uid://dfvi0w0b8q13k" path="res://player.tscn" id="2_l15lf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i4jsr"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -16,6 +18,7 @@ tonemap_mode = 2
 glow_enabled = true
 
 [node name="World" type="Node"]
+script = ExtResource("1_6g01w")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
@@ -25,3 +28,6 @@ shadow_enabled = true
 environment = SubResource("Environment_eowj1")
 
 [node name="Node3D" parent="." instance=ExtResource("1_4hc7d")]
+
+[node name="Player" parent="Node3D" instance=ExtResource("2_l15lf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.14273, 147.842, -7.63196)
