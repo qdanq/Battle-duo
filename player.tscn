@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfvi0w0b8q13k"]
+[gd_scene load_steps=10 format=3 uid="uid://dfvi0w0b8q13k"]
 
 [ext_resource type="ArrayMesh" uid="uid://bxourcuql6iub" path="res://models/weapons/pistol.obj" id="1_qi2as"]
 
@@ -50,6 +50,115 @@ func _physics_process(delta):
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g2l7h"]
 
+[sub_resource type="Animation" id="Animation_admm7"]
+resource_name = "idle"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/Pistol:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector3(0.55674, -0.476864, -0.461548), Vector3(0.55674, -0.491004, -0.461548)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D/Pistol:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0), Vector3(2.62206e-09, 1.5708, -0.0600219)]
+}
+
+[sub_resource type="Animation" id="Animation_i50hr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/Pistol:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.55674, -0.476864, -0.461548)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D/Pistol:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.5708, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bqjym"]
+resource_name = "move"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/Pistol:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2),
+"update": 0,
+"values": [Vector3(0.55674, -0.476864, -0.461548), Vector3(0.538915, -0.452837, -0.461548), Vector3(0.55674, -0.476864, -0.461548), Vector3(0.582859, -0.462686, -0.461548)]
+}
+
+[sub_resource type="Animation" id="Animation_jbg0s"]
+resource_name = "shoot"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D/Pistol:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0.55674, -0.462661, -0.454303), Vector3(0.557, -0.477, -0.462)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D/Pistol:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(-5.93383e-09, 1.5708, 0.136171), Vector3(0, 1.5708, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ogk01"]
+_data = {
+"RESET": SubResource("Animation_i50hr"),
+"idle": SubResource("Animation_admm7"),
+"move": SubResource("Animation_bqjym"),
+"shoot": SubResource("Animation_jbg0s")
+}
+
 [node name="Player" type="CharacterBody3D"]
 script = SubResource("GDScript_8cwsq")
 
@@ -65,6 +174,12 @@ shape = SubResource("CapsuleShape3D_g2l7h")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55603, -0.112114)
 
 [node name="Pistol" type="MeshInstance3D" parent="Camera3D"]
-transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0.643402, -0.47625, -0.510538)
+transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0.55674, -0.476864, -0.461548)
 mesh = ExtResource("1_qi2as")
 skeleton = NodePath("../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+libraries = {
+"": SubResource("AnimationLibrary_ogk01")
+}
