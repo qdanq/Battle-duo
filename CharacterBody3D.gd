@@ -10,7 +10,7 @@ var gravity = 20.0
 @onready var camera := $Neck/Camera3D
 @onready var guncam := $Neck/Camera3D/SubViewportContainer/SubViewport/Guncam
 @onready var anim_player := $AnimationPlayer
-@onready var muzzle_flash := $Neck/Camera3D/AutomaticRifle/MuzzleFlash
+@onready var muzzle_flash := $Neck/Camera3D/AutomaticRifle/muzzle_flash
 
 func _enter_tree():
 	set_multiplayer_authority(str(name).to_int())
@@ -77,4 +77,4 @@ func play_shoot_effects():
 		muzzle_flash.emitting = true
 	else:
 		anim_player.stop()
-	
+		muzzle_flash.emitting = false
