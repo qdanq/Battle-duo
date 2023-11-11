@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxd8fu4lw006n"]
+[gd_scene load_steps=6 format=3 uid="uid://dxd8fu4lw006n"]
 
 [ext_resource type="PackedScene" uid="uid://ce5wqnn3o5gfi" path="res://4islandsmap.tscn" id="1_4hc7d"]
 [ext_resource type="Script" path="res://world.gd" id="1_6g01w"]
@@ -15,8 +15,6 @@ background_mode = 2
 sky = SubResource("Sky_ujq7m")
 tonemap_mode = 2
 glow_enabled = true
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_1xcn2"]
 
 [node name="World" type="Node"]
 script = ExtResource("1_6g01w")
@@ -72,10 +70,6 @@ text = "Join"
 layout_mode = 2
 placeholder_text = "Enter address"
 alignment = 1
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.64371, 148.339, -25.0966)
-mesh = SubResource("CapsuleMesh_1xcn2")
 
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/MarginContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
