@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dfvi0w0b8q13k"]
+[gd_scene load_steps=16 format=3 uid="uid://dfvi0w0b8q13k"]
 
 [ext_resource type="ArrayMesh" uid="uid://bxourcuql6iub" path="res://models/weapons/pistol.obj" id="1_qi2as"]
 [ext_resource type="Texture2D" uid="uid://bqyrsf31binyc" path="res://addons/kenney_particle_pack/muzzle_03.png" id="2_ksf4a"]
@@ -9,6 +9,7 @@ script/source = "extends CharacterBody3D
 
 @onready var camera = $Camera3D
 @onready var anim_player = $AnimationPlayer
+@onready var muzzle_flash = $Camera3D/Pistol/MuzzleFlash
 
 const SPEED = 13.0
 const JUMP_VELOCITY = 8.0
@@ -62,6 +63,8 @@ func _physics_process(delta):
 func play_shoot_effects():
 	anim_player.stop()
 	anim_player.play(\"shoot\")
+	muzzle_flash.restart()
+	muzzle_flash.emitting = true
 	
 "
 
@@ -69,11 +72,21 @@ func play_shoot_effects():
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g2l7h"]
 
+[sub_resource type="Gradient" id="Gradient_m20ii"]
+offsets = PackedFloat32Array(0, 0.195122, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_aleu7"]
+gradient = SubResource("Gradient_m20ii")
+
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nvnt8"]
 gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_aleu7")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qdq01"]
 transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
 albedo_color = Color(0.976471, 0.811765, 0.341176, 1)
 albedo_texture = ExtResource("2_ksf4a")
 billboard_mode = 3
@@ -83,7 +96,7 @@ particles_anim_loop = false
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_x7oop"]
 material = SubResource("StandardMaterial3D_qdq01")
-size = Vector2(0.25, 0.25)
+size = Vector2(0.2, 0.2)
 orientation = 2
 
 [sub_resource type="Animation" id="Animation_admm7"]
@@ -215,8 +228,11 @@ mesh = ExtResource("1_qi2as")
 skeleton = NodePath("../..")
 
 [node name="MuzzleFlash" type="GPUParticles3D" parent="Camera3D/Pistol"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 1.06581e-14, 0, 1, 2.3715, 3.65611, -1.79435)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 1.06581e-14, 0, 1, 2.3715, 3.47848, -1.79435)
+emitting = false
 amount = 1
+lifetime = 0.2
+one_shot = true
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_nvnt8")
 draw_pass_1 = SubResource("PlaneMesh_x7oop")
