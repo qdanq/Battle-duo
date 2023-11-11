@@ -36,20 +36,6 @@ material = SubResource("StandardMaterial3D_tf0xs")
 size = Vector2(0.5, 0.5)
 orientation = 2
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_46bmj"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/sync = true
-properties/0/watch = false
-properties/1/path = NodePath(".:rotation")
-properties/1/spawn = true
-properties/1/sync = true
-properties/1/watch = false
-properties/2/path = NodePath("Neck/Camera3D:rotation")
-properties/2/spawn = true
-properties/2/sync = true
-properties/2/watch = false
-
 [sub_resource type="Animation" id="Animation_lsjur"]
 length = 0.001
 tracks/0/type = "value"
@@ -171,6 +157,36 @@ _data = {
 "shoot": SubResource("Animation_mfles")
 }
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_46bmj"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/sync = true
+properties/0/watch = false
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/sync = true
+properties/1/watch = false
+properties/2/path = NodePath("Neck:rotation")
+properties/2/spawn = true
+properties/2/sync = true
+properties/2/watch = false
+properties/3/path = NodePath("Neck/Camera3D:rotation")
+properties/3/spawn = true
+properties/3/sync = true
+properties/3/watch = false
+properties/4/path = NodePath("AnimationPlayer:current_animation")
+properties/4/spawn = true
+properties/4/sync = true
+properties/4/watch = false
+properties/5/path = NodePath("Neck/Camera3D/AutomaticRifle/muzzle_flash:emitting")
+properties/5/spawn = true
+properties/5/sync = true
+properties/5/watch = false
+properties/6/path = NodePath("Neck/Camera3D/AutomaticRifle/muzzle_flash:one_shot")
+properties/6/spawn = true
+properties/6/sync = true
+properties/6/watch = false
+
 [node name="CharacterBody3D" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -238.466, 148.612, 23.3636)
 collision_layer = 2
@@ -186,7 +202,6 @@ shape = SubResource("ConvexPolygonShape3D_17ecx")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.521295, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Neck"]
-cull_mask = 1048573
 
 [node name="AutomaticRifle" type="MeshInstance3D" parent="Neck/Camera3D"]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 1.90503, -2.4435, -0.262785)
@@ -204,29 +219,11 @@ local_coords = true
 process_material = SubResource("ParticleProcessMaterial_05gwt")
 draw_pass_1 = SubResource("PlaneMesh_nolb2")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Neck/Camera3D"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="Neck/Camera3D/SubViewportContainer"]
-transparent_bg = true
-handle_input_locally = false
-size = Vector2i(1280, 720)
-render_target_update_mode = 4
-
-[node name="Guncam" type="Camera3D" parent="Neck/Camera3D/SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -238.466, 149.133, 23.364)
-cull_mask = 2
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_46bmj")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_default_blend_time = 0.05
 libraries = {
 "": SubResource("AnimationLibrary_47j04")
 }
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_46bmj")

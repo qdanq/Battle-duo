@@ -7,7 +7,6 @@ const Player = preload("res://character_body_3d.tscn")
 const PORT = 9999
 var enet_peer = ENetMultiplayerPeer.new()
 
-		
 func _on_host_button_pressed():
 	main_menu.hide()
 
@@ -16,6 +15,7 @@ func _on_host_button_pressed():
 	multiplayer.peer_connected.connect(add_player)
 	
 	add_player(multiplayer.get_unique_id())
+	
 func _on_join_button_pressed():
 	main_menu.hide()
 

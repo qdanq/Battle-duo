@@ -8,7 +8,6 @@ const JUMP_VELOCITY = 8.0
 var gravity = 20.0
 @onready var neck := $Neck 
 @onready var camera := $Neck/Camera3D
-@onready var guncam := $Neck/Camera3D/SubViewportContainer/SubViewport/Guncam
 @onready var anim_player := $AnimationPlayer
 @onready var muzzle_flash := $Neck/Camera3D/AutomaticRifle/muzzle_flash
 
@@ -23,7 +22,7 @@ func _ready():
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not is_multiplayer_authority(): return
-	
+
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	elif event.is_action_pressed("ui_cancel"):
@@ -34,17 +33,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			camera.rotate_x(-event.relative.y * 0.01)
 			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 
-
-func _process(delta):
-	guncam.global_transform = camera.global_transform
-
 func _physics_process(delta):
 	if not is_multiplayer_authority(): return
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
-	play_shoot_effects()
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -60,6 +54,7 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 		
+	play_shoot_effects()
 	if anim_player.current_animation == "shoot":
 		pass
 		
@@ -70,11 +65,14 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+
 func play_shoot_effects():
 	if Input.is_action_pressed("shoot"):
 		anim_player.play("shoot")
 		muzzle_flash.restart()
 		muzzle_flash.emitting = true
 	else:
-		anim_player.stop()
+		anim_player.stop()	
 		muzzle_flash.emitting = false
+
+
