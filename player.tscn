@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dfvi0w0b8q13k"]
+[gd_scene load_steps=14 format=3 uid="uid://dfvi0w0b8q13k"]
 
 [ext_resource type="ArrayMesh" uid="uid://bxourcuql6iub" path="res://models/weapons/pistol.obj" id="1_qi2as"]
+[ext_resource type="Texture2D" uid="uid://bqyrsf31binyc" path="res://addons/kenney_particle_pack/muzzle_03.png" id="2_ksf4a"]
 
 [sub_resource type="GDScript" id="GDScript_8cwsq"]
 resource_name = "Player"
@@ -67,6 +68,23 @@ func play_shoot_effects():
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8ag0u"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g2l7h"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nvnt8"]
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qdq01"]
+transparency = 1
+albedo_color = Color(0.976471, 0.811765, 0.341176, 1)
+albedo_texture = ExtResource("2_ksf4a")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_x7oop"]
+material = SubResource("StandardMaterial3D_qdq01")
+size = Vector2(0.25, 0.25)
+orientation = 2
 
 [sub_resource type="Animation" id="Animation_admm7"]
 resource_name = "idle"
@@ -195,6 +213,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55603, -0.112114)
 transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0.55674, -0.476864, -0.461548)
 mesh = ExtResource("1_qi2as")
 skeleton = NodePath("../..")
+
+[node name="MuzzleFlash" type="GPUParticles3D" parent="Camera3D/Pistol"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 1.06581e-14, 0, 1, 2.3715, 3.65611, -1.79435)
+amount = 1
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_nvnt8")
+draw_pass_1 = SubResource("PlaneMesh_x7oop")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
