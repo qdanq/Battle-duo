@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dfvi0w0b8q13k"]
+[gd_scene load_steps=5 format=3 uid="uid://dfvi0w0b8q13k"]
+
+[ext_resource type="ArrayMesh" uid="uid://bxourcuql6iub" path="res://models/weapons/pistol.obj" id="1_qi2as"]
 
 [sub_resource type="GDScript" id="GDScript_8cwsq"]
 resource_name = "Player"
@@ -60,4 +62,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_g2l7h")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55603, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55603, -0.112114)
+
+[node name="Pistol" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0.643402, -0.47625, -0.510538)
+mesh = ExtResource("1_qi2as")
+skeleton = NodePath("../..")
