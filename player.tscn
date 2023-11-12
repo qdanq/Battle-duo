@@ -253,7 +253,7 @@ properties/2/sync = true
 properties/2/watch = false
 
 [node name="Player" type="CharacterBody3D"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.644, 148.339, -25.097)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.598, 148.188, -19.367)
 collision_layer = 2
 script = SubResource("GDScript_8cwsq")
 
