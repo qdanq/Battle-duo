@@ -2,6 +2,8 @@ extends Node
 
 @onready var main_menu = $CanvasLayer/MainMenu
 @onready var address_entry = $CanvasLayer/MainMenu/MarginContainer/VBoxContainer/AddressEntry
+@onready var hud = $CanvasLayer/HUD
+@onready var health_bar = $CanvasLayer/HUD/HealthBar
 
 const Player = preload("res://player.tscn")
 const PORT = 6969

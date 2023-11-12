@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxd8fu4lw006n"]
+[gd_scene load_steps=9 format=3 uid="uid://dxd8fu4lw006n"]
 
 [ext_resource type="PackedScene" uid="uid://ce5wqnn3o5gfi" path="res://4islandsmap.tscn" id="1_4hc7d"]
 [ext_resource type="Script" path="res://world.gd" id="1_6g01w"]
+[ext_resource type="Texture2D" uid="uid://croui5l52h4mu" path="res://addons/kenney_particle_pack/circle_05.png" id="3_bpqsw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i4jsr"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -15,6 +16,12 @@ background_mode = 2
 sky = SubResource("Sky_ujq7m")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1nwm"]
+bg_color = Color(1, 0.0392157, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cdam5"]
+bg_color = Color(0, 0.721569, 0.321569, 1)
 
 [node name="World" type="Node"]
 script = ExtResource("1_6g01w")
@@ -70,6 +77,42 @@ text = "Join"
 layout_mode = 2
 placeholder_text = "Enter address"
 alignment = 1
+
+[node name="HUD" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.03, 0.03)
+pivot_offset = Vector2(400, 300)
+texture = ExtResource("3_bpqsw")
+stretch_mode = 5
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 542.0
+offset_right = -524.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_y1nwm")
+theme_override_styles/fill = SubResource("StyleBoxFlat_cdam5")
+value = 100.0
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://player.tscn")
