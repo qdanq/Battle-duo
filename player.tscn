@@ -77,6 +77,9 @@ func play_shoot_effects():
 	muzzle_flash.restart()
 	muzzle_flash.emitting = true
 	
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == \"shoot\":
+		anim_player.play(\"idle\")
 "
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8ag0u"]
@@ -273,3 +276,5 @@ libraries = {
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_0r7t1")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
