@@ -6,7 +6,7 @@ extends Node
 @onready var health_bar = $CanvasLayer/HUD/HealthBar
 
 const Player = preload("res://player.tscn")
-const PORT = 9999
+const PORT = 6006
 var enet_peer = ENetMultiplayerPeer.new()
 
 func _unhandled_input(event):
@@ -30,7 +30,7 @@ func _on_join_button_pressed():
 	main_menu.hide()
 	hud.show()
 	
-	enet_peer.create_client("localhost", PORT)
+	enet_peer.create_client(address_entry.text, PORT)
 	multiplayer.multiplayer_peer = enet_peer
 	
 	
