@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dfvi0w0b8q13k"]
+[gd_scene load_steps=17 format=3 uid="uid://dfvi0w0b8q13k"]
 
 [ext_resource type="ArrayMesh" uid="uid://bxourcuql6iub" path="res://models/weapons/pistol.obj" id="1_qi2as"]
 [ext_resource type="Texture2D" uid="uid://bmbu12lbnrams" path="res://addons/kenney_particle_pack/muzzle_05.png" id="2_er7t0"]
@@ -218,6 +218,20 @@ _data = {
 "shoot": SubResource("Animation_jbg0s")
 }
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_0r7t1"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/sync = true
+properties/0/watch = false
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/sync = true
+properties/1/watch = false
+properties/2/path = NodePath("Camera3D:rotation")
+properties/2/spawn = true
+properties/2/sync = true
+properties/2/watch = false
+
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.644, 148.339, -25.097)
 collision_layer = 2
@@ -255,3 +269,6 @@ playback_default_blend_time = 0.05
 libraries = {
 "": SubResource("AnimationLibrary_ogk01")
 }
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_0r7t1")
