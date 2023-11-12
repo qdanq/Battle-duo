@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://dfvi0w0b8q13k"]
+[gd_scene load_steps=18 format=3 uid="uid://dfvi0w0b8q13k"]
 
 [ext_resource type="ArrayMesh" uid="uid://bxourcuql6iub" path="res://models/weapons/pistol.obj" id="1_qi2as"]
 [ext_resource type="Texture2D" uid="uid://bmbu12lbnrams" path="res://addons/kenney_particle_pack/muzzle_05.png" id="2_er7t0"]
+[ext_resource type="Texture2D" uid="uid://croui5l52h4mu" path="res://addons/kenney_particle_pack/circle_05.png" id="3_7hh0u"]
 
 [sub_resource type="GDScript" id="GDScript_8cwsq"]
 resource_name = "Player"
@@ -10,6 +11,9 @@ script/source = "extends CharacterBody3D
 @onready var camera = $Camera3D
 @onready var anim_player = $AnimationPlayer
 @onready var muzzle_flash = $Camera3D/Pistol/MuzzleFlash
+@onready var raycast = $Camera3D/RayCast3D
+
+var health = 100
 
 const SPEED = 13.0
 const JUMP_VELOCITY = 8.0
@@ -36,7 +40,10 @@ func _unhandled_input(event):
 		
 	if Input.is_action_just_pressed(\"shoot\") \\
 	and anim_player.current_animation != \"shoot\":
-		play_shoot_effects.rpc()	
+		play_shoot_effects.rpc()
+		if raycast.is_colliding():
+			var hit_player = raycast.get_collider()
+			hit_player.receive_damage.rpc_id(hit_player.get_multiplayer_authority())
 
 func _physics_process(delta):
 	if not is_multiplayer_authority(): return
@@ -76,6 +83,13 @@ func play_shoot_effects():
 	anim_player.play(\"shoot\")
 	muzzle_flash.restart()
 	muzzle_flash.emitting = true
+	
+@rpc(\"any_peer\")
+func receive_damage():
+	health -= 25
+	if health <= 0:
+		health = 100
+		position = Vector3.ZERO
 	
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == \"shoot\":
@@ -266,6 +280,21 @@ one_shot = true
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_nvnt8")
 draw_pass_1 = SubResource("PlaneMesh_x7oop")
+
+[node name="TextureRect" type="TextureRect" parent="Camera3D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.03, 0.03)
+pivot_offset = Vector2(400, 300)
+texture = ExtResource("3_7hh0u")
+stretch_mode = 5
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 0, -50)
+collision_mask = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
