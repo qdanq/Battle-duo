@@ -45,6 +45,7 @@ func _unhandled_input(event):
 		if raycast.is_colliding():
 			var hit_player = raycast.get_collider()
 			hit_player.receive_damage.rpc_id(hit_player.get_multiplayer_authority())
+			
 
 func _physics_process(delta):
 	if not is_multiplayer_authority(): return
@@ -84,6 +85,7 @@ func play_shoot_effects():
 	anim_player.play(\"shoot\")
 	muzzle_flash.restart()
 	muzzle_flash.emitting = true
+	print(\"SHOOT\")
 	
 @rpc(\"any_peer\")
 func receive_damage():
