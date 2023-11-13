@@ -23,6 +23,10 @@ func spawn_location():
 	var loc = spawn_points[point]
 	taken_points.append(loc)
 	spawn_points.remove(point)
+	if spawn_points.size() <= 0:			# INFINITE SPAWN
+		spawn_points = spawn_points_clone.duplicate()
+		taken_points.clear()
+	return loc
 
 func _on_host_button_pressed():
 	main_menu.hide()
