@@ -57,10 +57,10 @@ func add_player(peer_id):
 	var player = Player.instantiate()
 	player.name = str(peer_id)
 	add_child(player)
+	player.global_position = Vector3(spawn_location())
 	if player.is_multiplayer_authority():
 		player.health_changed.connect(update_health_bar)
-		
-	player.position = Vector3(spawn_location())
+
 		
 func remove_player(peer_id):
 	var player = get_node_or_null(str(peer_id))
