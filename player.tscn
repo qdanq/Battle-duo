@@ -15,6 +15,9 @@ signal health_changed(health_value)
 @onready var raycast = $Camera3D/RayCast3D
 @onready var player_model = $PlayerModel
 
+var spawn_points = [Vector3(-4.598, 148.188, -19.367), Vector3(-143.5, 148.10, -134.98), \\
+Vector3(-111.9, 148.10, 115.94), Vector3(-255.6, 148.15, -25.796)] 
+
 var health = 100
 
 const SPEED = 13.0
@@ -86,7 +89,6 @@ func play_shoot_effects():
 	anim_player.play(\"shoot\")
 	muzzle_flash.restart()
 	muzzle_flash.emitting = true
-	print(\"SHOOT\")
 	
 @rpc(\"any_peer\")
 func receive_damage():

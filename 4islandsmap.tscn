@@ -74,6 +74,11 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="islands/Island2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_iai4u")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="islands/Island2"]
+transform = Transform3D(-0.0146477, 0, -0.199463, 0, 0.2, 0, 0.199463, 0, -0.0146477, -0.211777, 6.8694, 11.1932)
+mesh = SubResource("CapsuleMesh_0grmg")
+skeleton = NodePath("../../..")
+
 [node name="Island3" type="MeshInstance3D" parent="islands"]
 transform = Transform3D(-4.96166, 0, -0.618008, 0, 5, 0, 0.618008, 0, -4.96166, -137.731, 113.756, -79.3204)
 mesh = ExtResource("1_lj6aj")
@@ -94,8 +99,23 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="islands/Island4/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_iai4u")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.59784, 148.188, -19.367)
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="islands"]
+transform = Transform3D(0.979575, 0, 0.201078, 0, 1, 0, -0.201078, 0, 0.979575, -2.13041, 297.924, -25.7958)
 mesh = SubResource("CapsuleMesh_0grmg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="islands"]
+transform = Transform3D(-0.994881, 0, -0.101056, 0, 1, 0, 0.101056, 0, -0.994881, -255.674, 148.962, 8.12957)
+mesh = SubResource("CapsuleMesh_0grmg")
+skeleton = NodePath("../..")
+
+[node name="islandtest" type="MeshInstance3D" parent="islands"]
+transform = Transform3D(0.86824, 0, -4.92404, 0, 5, 0, 4.92404, 0, 0.86824, -200.374, 113.81, -0.546)
+mesh = ExtResource("1_lj6aj")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="islands/islandtest"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="islands/islandtest/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_iai4u")
 
 [connection signal="body_entered" from="plane/Area3D" to="plane/Area3D" method="_on_body_entered"]
