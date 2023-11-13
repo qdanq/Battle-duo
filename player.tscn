@@ -13,6 +13,7 @@ signal health_changed(health_value)
 @onready var anim_player = $AnimationPlayer
 @onready var muzzle_flash = $Camera3D/Pistol/MuzzleFlash
 @onready var raycast = $Camera3D/RayCast3D
+@onready var player_model = $PlayerModel
 
 var health = 100
 
@@ -259,7 +260,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.598
 collision_layer = 2
 script = SubResource("GDScript_8cwsq")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="PlayerModel" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_8ag0u")
 
