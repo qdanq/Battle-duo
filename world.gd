@@ -9,6 +9,11 @@ const Player = preload("res://player.tscn")
 const PORT = 6006
 var enet_peer = ENetMultiplayerPeer.new()
 
+var spawn_points = [Vector3(-4.598, 148.188, -19.367), Vector3(-143.5, 148.10, -134.98), \
+Vector3(-111.9, 148.10, 115.94), Vector3(-255.6, 148.15, -25.796)] 
+var spawn_points_clone = spawn_points
+var taken_points = []
+
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
