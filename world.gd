@@ -20,6 +20,9 @@ func _unhandled_input(event):
 
 func spawn_location():
 	var point = randi()%spawn_points.size()
+	var loc = spawn_points[point]
+	taken_points.append(loc)
+	spawn_points.remove(point)
 
 func _on_host_button_pressed():
 	main_menu.hide()
