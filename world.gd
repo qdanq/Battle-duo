@@ -10,28 +10,13 @@ const Player = preload("res://player.tscn")
 const PORT = 6006
 var enet_peer = ENetMultiplayerPeer.new()
 
-var spawn_points = [Vector3(-4.598, 148.188, -19.367), Vector3(-143.5, 148.10, -134.98), \
-Vector3(-111.9, 148.10, 115.94), Vector3(-255.6, 148.15, -25.796)] 
-var spawn_points_clone = spawn_points
-var taken_points = []
+
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 
-func spawn_location():
-	var point = randi()%spawn_points.size()
-	print("point is ", point)
-	var loc = spawn_points[point]
-	print("loc is, ", loc)
-	taken_points.append(loc)
-	print("taken_points is, ", taken_points)
-	spawn_points.remove_at(point)
-	print("spawn_points is, ", spawn_points)
-	if spawn_points.size() <= 0:			# INFINITE SPAWN
-		spawn_points = spawn_points_clone.duplicate()
-		taken_points.clear()
-	return loc
+
 
 func _on_host_button_pressed():
 	main_menu.hide()
@@ -61,7 +46,6 @@ func add_player(peer_id):
 	if player.is_multiplayer_authority():
 		player.health_changed.connect(update_health_bar)
 		
-	player.global_position = Vector3(spawn_location())
 
 		
 func remove_player(peer_id):

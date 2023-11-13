@@ -24,11 +24,18 @@ const JUMP_VELOCITY = 8.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = 20.0
 
+var spawn_points = [Vector3(-4.598, 148.188, -19.367), Vector3(-143.5, 148.10, -134.98), \\
+Vector3(-111.9, 148.10, 115.94), Vector3(-255.6, 148.15, -25.796)] 
+var spawn_points_clone = spawn_points
+var taken_points = []
+
 func _enter_tree():
 	set_multiplayer_authority(str(name).to_int())
 	
 func _ready():
 	if not is_multiplayer_authority(): return
+	
+	Player.global_position = Vector3(-255.6, 148.15, -25.796)
 	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	camera.current = true
@@ -106,6 +113,21 @@ func dead():
 		health = 100
 		position = Vector3(-4.598, 148.188, -19.367)
 	health_changed.emit(health)
+	
+func spawn_location():
+	var point = randi()%spawn_points.size()
+	print(\"point is \", point)
+	var loc = spawn_points[point]
+	print(\"loc is, \", loc)
+	taken_points.append(loc)
+	print(\"taken_points is, \", taken_points)
+	spawn_points.remove_at(point)
+	print(\"spawn_points is, \", spawn_points)
+	if spawn_points.size() <= 0:			# INFINITE SPAWN
+		spawn_points = spawn_points_clone.duplicate()
+		taken_points.clear()
+		
+	return loc
 "
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8ag0u"]
