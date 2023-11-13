@@ -6,6 +6,7 @@ extends Node
 @onready var health_bar = $CanvasLayer/HUD/HealthBar
 
 const Player = preload("res://player.tscn")
+
 const PORT = 6006
 var enet_peer = ENetMultiplayerPeer.new()
 
@@ -20,9 +21,13 @@ func _unhandled_input(event):
 
 func spawn_location():
 	var point = randi()%spawn_points.size()
+	print("point is ", point)
 	var loc = spawn_points[point]
+	print("loc is, ", loc)
 	taken_points.append(loc)
-	spawn_points.remove(point)
+	print("taken_points is, ", taken_points)
+	spawn_points.remove_at(point)
+	print("spawn_points is, ", spawn_points)
 	if spawn_points.size() <= 0:			# INFINITE SPAWN
 		spawn_points = spawn_points_clone.duplicate()
 		taken_points.clear()
@@ -54,6 +59,8 @@ func add_player(peer_id):
 	add_child(player)
 	if player.is_multiplayer_authority():
 		player.health_changed.connect(update_health_bar)
+		
+	player.position = Vector3(spawn_location())
 		
 func remove_player(peer_id):
 	var player = get_node_or_null(str(peer_id))
