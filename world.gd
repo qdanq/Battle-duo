@@ -18,6 +18,9 @@ func _unhandled_input(event):
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 
+func spawn_location():
+	var point = randi()%spawn_points.size()
+
 func _on_host_button_pressed():
 	main_menu.hide()
 	hud.show()
