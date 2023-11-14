@@ -27,9 +27,9 @@ func _on_host_button_pressed():
 	
 	add_player(multiplayer.get_unique_id())
 
-	enet_peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
+	#enet_peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	
-	
+	#multiplayer.set_multiplayer_peer(enet_peer)
 
 func _on_join_button_pressed():
 	main_menu.hide()
