@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://ce5wqnn3o5gfi"]
+[gd_scene load_steps=13 format=3 uid="uid://ce5wqnn3o5gfi"]
 
 [ext_resource type="Script" path="res://Area3D.gd" id="1_i2blv"]
 [ext_resource type="ArrayMesh" uid="uid://d0avvy2jnc0wr" path="res://models/maps/island1-4.obj" id="1_lj6aj"]
+[ext_resource type="Script" path="res://4islandsmap.gd" id="1_twixv"]
 [ext_resource type="Texture2D" uid="uid://cdjy5tw7tr25t" path="res://models/maps/island5.png" id="2_pfu02"]
 [ext_resource type="ArrayMesh" uid="uid://dq3kgwiodkw2f" path="res://models/maps/island5.obj" id="3_vswuc"]
 
@@ -26,6 +27,7 @@ data = PackedVector3Array(-4.3, -3.4, 1.4, -4.3, -3.3, 1.4, -4.3, -3.4, 2.5, -4.
 
 [node name="Node3D" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0934982, 0, 0.211515)
+script = ExtResource("1_twixv")
 
 [node name="plane" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.578343, 0, -0.815794, 0, 1, 0, 0.815794, 0, 0.578343, 1.61822, 0, 0)
@@ -98,5 +100,19 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="islands/Island4/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_iai4u")
+
+[node name="SpawnLocations" type="Node3D" parent="."]
+
+[node name="0" type="Node3D" parent="SpawnLocations" groups=["PlayerSpawnPoint"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.598, 148.188, -19.367)
+
+[node name="1" type="Node3D" parent="SpawnLocations" groups=["PlayerSpawnPoint"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -143.5, 148.1, -134.98)
+
+[node name="2" type="Node3D" parent="SpawnLocations" groups=["PlayerSpawnPoint"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111.9, 148.1, 115.94)
+
+[node name="3" type="Node3D" parent="SpawnLocations" groups=["PlayerSpawnPoint"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -255.6, 148.15, -25.796)
 
 [connection signal="body_entered" from="plane/Area3D" to="plane/Area3D" method="_on_body_entered"]

@@ -5,7 +5,6 @@ extends Node
 @onready var hud = $CanvasLayer/HUD
 @onready var health_bar = $CanvasLayer/HUD/HealthBar
 
-@export var player_scene : PackedScene	
 
 const Player = preload("res://player.tscn")
 
