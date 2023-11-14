@@ -26,6 +26,9 @@ func _on_host_button_pressed():
 	multiplayer.peer_disconnected.connect(remove_player)
 	
 	add_player(multiplayer.get_unique_id())
+
+	enet_peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
+	
 	
 
 func _on_join_button_pressed():
