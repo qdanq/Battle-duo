@@ -9,7 +9,7 @@ extends Node
 const Player = preload("res://player.tscn")
 
 const PORT = 6006
-var enet_peer = ENetMultiplayerPeer.new()
+var enet_peer = ENetMultiplayerPeer.new() # For future loby declare clear var and enet move to hostbutton
 
 
 func _unhandled_input(event):
@@ -37,7 +37,7 @@ func _on_join_button_pressed():
 	
 	enet_peer.create_client(address_entry.text, PORT)
 	multiplayer.multiplayer_peer = enet_peer
-	
+	#enet_peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	
 	
 func add_player(peer_id):
