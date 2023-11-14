@@ -5,18 +5,17 @@ extends Node
 @onready var hud = $CanvasLayer/HUD
 @onready var health_bar = $CanvasLayer/HUD/HealthBar
 
+@export var player_scene : PackedScene	
+
 const Player = preload("res://player.tscn")
 
 const PORT = 6006
 var enet_peer = ENetMultiplayerPeer.new()
 
 
-
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
-
-
 
 func _on_host_button_pressed():
 	main_menu.hide()
@@ -38,8 +37,10 @@ func _on_join_button_pressed():
 	multiplayer.multiplayer_peer = enet_peer
 	
 	
+	
 func add_player(peer_id):
 	var player = Player.instantiate()
+	player.position = Vector3(-255.6, 148.15, -25.796)
 	player.name = str(peer_id)
 	add_child(player)
 	
@@ -47,7 +48,6 @@ func add_player(peer_id):
 		player.health_changed.connect(update_health_bar)
 		
 
-		
 func remove_player(peer_id):
 	var player = get_node_or_null(str(peer_id))
 	if player:
