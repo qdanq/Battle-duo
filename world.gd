@@ -42,8 +42,9 @@ func _on_join_button_pressed():
 	
 func add_player(peer_id):
 	var player = Player.instantiate()
-	player.position = Vector3(-255.6, 148.15, -25.796)
+	player.position = Vector3(-4.598, 148.188, -19.367)
 	player.name = str(peer_id)
+	print(player.name)
 	add_child(player)
 	
 	if player.is_multiplayer_authority():
