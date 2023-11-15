@@ -15,16 +15,22 @@ var enet_peer = ENetMultiplayerPeer.new() # For future loby declare clear var an
 func _ready():
 	multiplayer.peer_connected.connect(peer_connected)
 	multiplayer.peer_disconnected.connect(peer_disconnected)
-	multiplayer.peer_connected_to_server.connect(Connected_to_server)
-	multiplayer.connection_failed.connect(Connection_failed)
+	multiplayer.peer_connected_to_server.connect(connected_to_server)
+	multiplayer.connection_failed.connect(connection_failed)
 	
-
+# called on server and clients
 func peer_connected(id):
 	print("Player connected " + id)
 	
 func peer_disconnected(id):
 	print("Player disconnected" + id)
+	
+func connected_to_server():
+	print("Connected to server!")
 
+func connection_failed():
+	print("Connection failed!")
+	
 func _on_host_button_button_down():
 	pass # Replace with function body.
 
