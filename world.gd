@@ -43,9 +43,8 @@ func _on_join_button_pressed():
 func add_player(peer_id):
 	var player = Player.instantiate()
 	player.name = str(peer_id)
-	SendPlayerInformation.rpc_id(1, "qq",  peer_id) # add player_name by lineEdit entry
 	add_child(player)
-	player.position = Vector3(-4.598, 148.188, -19.367)
+	player.global_position += Vector3(-4.598, 148.188, -19.367)
 	
 	if player.is_multiplayer_authority():
 		player.health_changed.connect(update_health_bar)
@@ -63,15 +62,15 @@ func _on_multiplayer_spawner_spawned(node):
 	if node.is_multiplayer_authority():
 		node.health_changed.connect(update_health_bar)
 		
-@rpc("any_peer", "call_local")
+@rpc("any_peer")
 func SendPlayerInformation(name, id):
 	if !GameManager.players.has(id):
 		GameManager.players[id] = {
 			"name": name,
 			"id": id,
 		}
-	
-	if multiplayer.is_server():
-		for i in GameManager.players:
-			SendPlayerInformation.rpc(GameManager.players[i].name, i)
-			
+#
+#	if multiplayer.is_server():
+#		for i in GameManager.players:
+#			SendPlayerInformation.rpc(GameManager.players[i].name, i)
+#
