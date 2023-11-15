@@ -41,7 +41,7 @@ func _on_host_button_button_down():
 		print("Cant host: " + error)
 		return
 	
-	peer.get_host().compress()
+	peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 
 
 func _on_join_button_button_down():
