@@ -12,6 +12,29 @@ const PORT = 6006
 var enet_peer = ENetMultiplayerPeer.new() # For future loby declare clear var and enet move to hostbutton
 
 
+func _ready():
+	multiplayer.peer_connected.connect(peer_connected)
+	multiplayer.peer_disconnected.connect(peer_disconnected)
+	multiplayer.peer_connected_to_server.connect(Connected_to_server)
+	multiplayer.connection_failed.connect(Connection_failed)
+	
+
+func peer_connected(id):
+	print("Player connected " + id)
+	
+func peer_disconnected(id):
+	print("Player disconnected" + id)
+
+func _on_host_button_button_down():
+	pass # Replace with function body.
+
+
+func _on_join_button_button_down():
+	pass # Replace with function body.
+
+
+func _on_start_game_button_down():
+	pass # Replace with function body.
 
 
 
@@ -82,13 +105,4 @@ var enet_peer = ENetMultiplayerPeer.new() # For future loby declare clear var an
 #		node.health_changed.connect(update_health_bar)
 
 
-func _on_host_button_button_down():
-	pass # Replace with function body.
 
-
-func _on_join_button_button_down():
-	pass # Replace with function body.
-
-
-func _on_start_game_button_down():
-	pass # Replace with function body.

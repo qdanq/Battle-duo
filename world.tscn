@@ -130,6 +130,7 @@ texture = ExtResource("3_bpqsw")
 _spawnable_scenes = PackedStringArray("res://player.tscn")
 spawn_path = NodePath("..")
 
-[connection signal="pressed" from="CanvasLayer/Lobby/MarginContainer/VBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/Lobby/MarginContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="button_down" from="CanvasLayer/Lobby/MarginContainer/VBoxContainer/HostButton" to="." method="_on_host_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/Lobby/MarginContainer/VBoxContainer/JoinButton" to="." method="_on_join_button_button_down"]
+[connection signal="button_down" from="CanvasLayer/Lobby/MarginContainer/VBoxContainer/StartGame" to="." method="_on_start_game_button_down"]
 [connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]
