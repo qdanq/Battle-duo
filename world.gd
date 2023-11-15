@@ -6,7 +6,7 @@ extends Node
 @onready var health_bar = $CanvasLayer/HUD/HealthBar
 
 
-const Player = preload("res://player.tscn")
+@export var Player : PackedScene
 
 const PORT = 6006
 var enet_peer = ENetMultiplayerPeer.new() # For future loby declare clear var and enet move to hostbutton
@@ -62,13 +62,6 @@ func _on_multiplayer_spawner_spawned(node):
 	if node.is_multiplayer_authority():
 		node.health_changed.connect(update_health_bar)
 		
-@rpc("any_peer")
-func SendPlayerInformation(name, id):
-	if !GameManager.players.has(id):
-		GameManager.players[id] = {
-			"name": name,
-			"id": id,
-		}
 #
 #	if multiplayer.is_server():
 #		for i in GameManager.players:
