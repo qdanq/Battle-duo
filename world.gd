@@ -9,7 +9,7 @@ extends Node
 const Player = preload("res://player.tscn")
 
 const PORT = 6006
-var enet_peer = ENetMultiplayerPeer.new() # For future loby declare clear var and enet move to hostbutton
+var peer
 
 
 func _ready():
@@ -22,17 +22,26 @@ func _ready():
 func peer_connected(id):
 	print("Player connected " + id)
 	
+# called on server and clients
 func peer_disconnected(id):
 	print("Player disconnected" + id)
 	
+# called only from clients
 func connected_to_server():
 	print("Connected to server!")
 
+# called only from clients
 func connection_failed():
 	print("Connection failed!")
 	
 func _on_host_button_button_down():
-	pass # Replace with function body.
+	peer = ENetMultiplayerPeer.new() 
+	var error = peer.create_server(PORT, 4) 	# 4 is max_clients, change this var for players_max
+	if error != OK:
+		print("Cant host: " + error)
+		return
+	
+	peer.get_host().compress()
 
 
 func _on_join_button_button_down():
