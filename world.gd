@@ -11,6 +11,10 @@ extends Node
 const PORT = 6006
 var enet_peer = ENetMultiplayerPeer.new() # For future loby declare clear var and enet move to hostbutton
 
+var spawn_points = [Vector3(-4.598, 148.188, -19.367), Vector3(-143.5, 148.10, -134.98), \
+Vector3(-111.9, 148.10, 115.94), Vector3(-255.6, 148.15, -25.796)] 
+var spawn_points_clone = spawn_points
+var taken_points = []
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("quit"):
@@ -37,6 +41,7 @@ func _on_join_button_pressed():
 	
 	enet_peer.create_client(address_entry.text, PORT)
 	multiplayer.multiplayer_peer = enet_peer
+	add_player(multiplayer.get_unique_id())
 	#enet_peer.get_host().compress(ENetConnection.COMPRESS_RANGE_CODER)
 	#multiplayer.set_multiplayer_peer(enet_peer)
 	
@@ -44,7 +49,9 @@ func add_player(peer_id):
 	var player = Player.instantiate()
 	player.name = str(peer_id)
 	add_child(player)
-	player.global_position += Vector3(-4.598, 148.188, -19.367)
+	player.set_position(Vector3(spawn_location()))
+	print("FUCK")
+	spawn_location()
 	
 	if player.is_multiplayer_authority():
 		player.health_changed.connect(update_health_bar)
@@ -62,6 +69,21 @@ func _on_multiplayer_spawner_spawned(node):
 	if node.is_multiplayer_authority():
 		node.health_changed.connect(update_health_bar)
 		
+		
+func spawn_location():
+	var point = randi()%spawn_points.size()
+	print("point is ", point)
+	var loc = spawn_points[point]
+	print("loc is, ", loc)
+	taken_points.append(loc)
+	print("taken_points is, ", taken_points)
+	spawn_points.remove_at(point)
+	print("spawn_points is, ", spawn_points)
+	if spawn_points.size() <= 0:			# INFINITE SPAWN
+		spawn_points = spawn_points_clone.duplicate()
+		taken_points.clear()
+		
+	return loc
 #
 #	if multiplayer.is_server():
 #		for i in GameManager.players:
