@@ -51,6 +51,7 @@ func add_player(peer_id):
 	add_child(player)
 	player.set_position(Vector3(spawn_location()))
 	Player.players_id.append(player.name)
+	player_script.players_id.append(player.name)
 	
 	if player.is_multiplayer_authority():
 		player.health_changed.connect(update_health_bar)
