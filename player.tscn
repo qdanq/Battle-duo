@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://dfvi0w0b8q13k"]
+[gd_scene load_steps=20 format=3 uid="uid://dfvi0w0b8q13k"]
 
 [ext_resource type="ArrayMesh" uid="uid://bxourcuql6iub" path="res://models/weapons/pistol.obj" id="1_qi2as"]
 [ext_resource type="Texture2D" uid="uid://bmbu12lbnrams" path="res://addons/kenney_particle_pack/muzzle_05.png" id="2_er7t0"]
 [ext_resource type="AudioStream" uid="uid://d0d74epfw3sg3" path="res://audio/pistol_shoot.wav" id="3_1g14o"]
 [ext_resource type="AudioStream" uid="uid://c6aucgmcqgi35" path="res://audio/hit_smbd.wav" id="4_n2qba"]
+[ext_resource type="AudioStream" uid="uid://c0xiflhrfwnp7" path="res://audio/get_hit.wav" id="5_brkps"]
 
 [sub_resource type="GDScript" id="GDScript_8cwsq"]
 resource_name = "Player"
@@ -18,6 +19,7 @@ signal health_changed(health_value)
 @onready var player_model = $PlayerModel
 @onready var pistol_shoot = $PistolShoot
 @onready var hit_smbd = $hit_smbd
+@onready var get_hit = $get_hit
 	
 var spawn_points = [Vector3(-4.598, 148.188, -19.367), Vector3(-143.5, 148.10, -134.98), \\
 Vector3(-111.9, 148.10, 115.94), Vector3(-255.6, 148.15, 7.546)] 
@@ -104,6 +106,7 @@ func play_shoot_effects():
 	
 @rpc(\"any_peer\")
 func receive_damage():
+	#get_hit.play()
 	health -= 25
 	if health <= 0:
 		health = 100
@@ -348,5 +351,8 @@ stream = ExtResource("3_1g14o")
 
 [node name="hit_smbd" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_n2qba")
+
+[node name="get_hit" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_brkps")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
