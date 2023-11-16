@@ -20,6 +20,8 @@ Vector3(-111.9, 148.10, 115.94), Vector3(-255.6, 148.15, 7.546)]
 var spawn_points_clone = spawn_points
 var taken_points = []
 
+
+
 var health = 100
 
 const SPEED = 13.0
@@ -133,6 +135,7 @@ func spawn_location():
 	
 	#print(\"loc again is \", loc)
 	return loc
+
 "
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8ag0u"]
@@ -299,7 +302,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CapsuleMesh_8ag0u")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1.16197, 0, 0, 0, 1, 0, 0, 0, 1.50571, 0.015285, 1, -0.231519)
 shape = SubResource("CapsuleShape3D_g2l7h")
 
 [node name="Camera3D" type="Camera3D" parent="."]
