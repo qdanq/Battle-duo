@@ -50,6 +50,7 @@ func add_player(peer_id):
 	player.name = str(peer_id)
 	add_child(player)
 	player.set_position(Vector3(spawn_location()))
+	Player.players_id.append(player.name)
 	
 	if player.is_multiplayer_authority():
 		player.health_changed.connect(update_health_bar)
@@ -83,4 +84,5 @@ func spawn_location():
 		taken_points.clear()
 	
 	print("loc again is ", loc)
+	Player.players_spawn_loc.append(loc)
 	return loc
