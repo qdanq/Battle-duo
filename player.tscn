@@ -112,6 +112,7 @@ func dead():
 	health_changed.emit(health)
 	
 
+
 "
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8ag0u"]
