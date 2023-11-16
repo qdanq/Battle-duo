@@ -1,5 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://dfvi0w0b8q13k"]
 
+[ext_resource type="ArrayMesh" uid="uid://12ptynvm7wgb" path="res://models/units/soldier.obj" id="1_axkm0"]
 [ext_resource type="ArrayMesh" uid="uid://bxourcuql6iub" path="res://models/weapons/pistol.obj" id="1_qi2as"]
 [ext_resource type="Texture2D" uid="uid://bmbu12lbnrams" path="res://addons/kenney_particle_pack/muzzle_05.png" id="2_er7t0"]
 [ext_resource type="AudioStream" uid="uid://d0d74epfw3sg3" path="res://audio/pistol_shoot.wav" id="3_1g14o"]
@@ -146,8 +147,6 @@ func spawn_location():
 	return loc
 
 "
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_8ag0u"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g2l7h"]
 
@@ -307,15 +306,15 @@ collision_layer = 2
 script = SubResource("GDScript_8cwsq")
 
 [node name="PlayerModel" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_8ag0u")
+transform = Transform3D(-1.2, 0, -1.04907e-07, 0, 1.2, 0, 1.04907e-07, 0, -1.2, 0, 0, 0)
+mesh = ExtResource("1_axkm0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.16197, 0, 0, 0, 1, 0, 0, 0, 1.50571, 0.015285, 1, -0.231519)
 shape = SubResource("CapsuleShape3D_g2l7h")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.55603, -0.112114)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.50834e-08, 1.12745, -0.457182)
 
 [node name="Pistol" type="MeshInstance3D" parent="Camera3D"]
 transform = Transform3D(-3.61999e-07, 0, 0.1, 0, 0.1, 0, -0.1, 0, -3.61999e-07, 0.55674, -0.476864, -0.461548)
