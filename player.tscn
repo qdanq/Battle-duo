@@ -95,7 +95,7 @@ func receive_damage():
 	health -= 25
 	if health <= 0:
 		health = 100
-		position = Vector3(-4.598, 148.188, -19.367)
+		dead()
 	health_changed.emit(health)
 	
 func _on_animation_player_animation_finished(anim_name):
