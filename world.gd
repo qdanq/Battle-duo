@@ -24,6 +24,7 @@ func _on_host_button_pressed():
 	main_menu.hide()
 	hud.show()
 	
+	
 	enet_peer.create_server(PORT)
 	multiplayer.multiplayer_peer = enet_peer
 	multiplayer.peer_connected.connect(add_player)
@@ -50,7 +51,6 @@ func add_player(peer_id):
 	player.name = str(peer_id)
 	add_child(player)
 	player.set_position(Vector3(spawn_location()))
-	#Player.players_id.append(player.name)
 	player_script.players_id.append(player.name)
 	
 	if player.is_multiplayer_authority():
@@ -85,5 +85,5 @@ func spawn_location():
 		taken_points.clear()
 	
 	print("loc again is ", loc)
-	#Player.players_spawn_loc.append(loc)
+	player_script.players_spawn_loc.append(loc)
 	return loc
