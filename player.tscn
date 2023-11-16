@@ -111,6 +111,9 @@ func dead():
 		position = Vector3(-4.598, 148.188, -19.367)
 	health_changed.emit(health)
 	
+func set_pos(pos):
+	position = Vector3(pos)
+	
 
 
 "

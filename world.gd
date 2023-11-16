@@ -69,21 +69,21 @@ func _on_multiplayer_spawner_spawned(node):
 	if node.is_multiplayer_authority():
 		node.health_changed.connect(update_health_bar)
 		
-		
+
 func spawn_location():
 	var point = randi()%spawn_points.size()
 	print("point is ", point)
 	var loc = spawn_points[point]
 	print("loc is, ", loc)
-	taken_points.append(loc)
-	print("taken_points is, ", taken_points)
+	#taken_points.append(loc)
+	#print("taken_points is, ", taken_points)
 	spawn_points.remove_at(point)
 	print("spawn_points is, ", spawn_points)
-	if spawn_points.size() <= 0:			# INFINITE SPAWN
-		print("spawn points duplicated")
-		spawn_points = spawn_points_clone.duplicate()
-		taken_points.clear()
+	#if spawn_points.size() <= 0:			# INFINITE SPAWN
+		#print("spawn points duplicated")
+		#spawn_points = spawn_points_clone.duplicate()
+		#taken_points.clear()
 	
-	print("loc again is ", loc)
+	#print("loc again is ", loc)
 	player_script.players_spawn_loc.append(loc)
 	return loc
