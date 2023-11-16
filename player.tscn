@@ -15,8 +15,10 @@ signal health_changed(health_value)
 @onready var raycast = $Camera3D/RayCast3D
 @onready var player_model = $PlayerModel
 	
-var players_id = []
-var players_spawn_loc = []
+var spawn_points = [Vector3(-4.598, 148.188, -19.367), Vector3(-143.5, 148.10, -134.98), \\
+Vector3(-111.9, 148.10, 115.94), Vector3(-255.6, 148.15, 7.546)] 
+var spawn_points_clone = spawn_points
+var taken_points = []
 
 var health = 100
 
@@ -106,16 +108,31 @@ func _on_animation_player_animation_finished(anim_name):
 
 func dead():
 	health -= 100
+	print(multiplayer.get_unique_id())
 	if health <= 0:
 		health = 100
-		position = Vector3(-4.598, 148.188, -19.367)
+		position = Vector3(spawn_location())
 	health_changed.emit(health)
 	
 func set_pos(pos):
 	position = Vector3(pos)
 	
 
-
+func spawn_location():
+	var point = randi()%spawn_points.size()
+	#print(\"point is \", point)
+	var loc = spawn_points[point]
+	#print(\"loc is, \", loc)
+	#taken_points.append(loc)
+	#print(\"taken_points is, \", taken_points)
+	#print(\"spawn_points is, \", spawn_points)
+	#if spawn_points.size() <= 0:			# INFINITE SPAWN
+		#print(\"spawn points duplicated\")
+		#spawn_points = spawn_points_clone.duplicate()
+		#taken_points.clear()
+	
+	#print(\"loc again is \", loc)
+	return loc
 "
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8ag0u"]
