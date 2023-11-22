@@ -17,11 +17,12 @@ signal health_changed(health_value)
 @onready var anim_player = $AnimationPlayer
 @onready var muzzle_flash = $Camera3D/Pistol/MuzzleFlash
 @onready var raycast = $Camera3D/RayCast3D
-@onready var player_model = $PlayerModel
+@onready var player_model = $\"Soldier(pistolIdle)\"
 @onready var pistol_shoot = $PistolShoot
 @onready var hit_smbd = $hit_smbd
 @onready var get_hit = $get_hit
 @onready var anim_player_move = $AnimationPlayer2
+
 	
 var spawn_points = [Vector3(-4.598, 148.188, -19.367), Vector3(-143.5, 148.10, -134.98), \\
 Vector3(-111.9, 148.10, 115.94), Vector3(-255.6, 148.15, 7.546)] 
@@ -44,7 +45,7 @@ func _enter_tree():
 	
 func _ready():
 	if not is_multiplayer_authority(): return
-	
+	player_model.hide()
 	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	camera.current = true
@@ -308,7 +309,7 @@ script = SubResource("GDScript_8cwsq")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.391177, 0.717609, -0.301653)
-cull_mask = 1048567
+near = 0.4
 
 [node name="Pistol" type="MeshInstance3D" parent="Camera3D"]
 transform = Transform3D(-3.61999e-07, 0, 0.1, 0, 0.1, 0, -0.1, 0, -3.61999e-07, 0.55674, -0.476864, -0.461548)
@@ -328,10 +329,6 @@ draw_pass_1 = SubResource("PlaneMesh_x7oop")
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
 target_position = Vector3(0, 0, -50)
 collision_mask = 2
-
-[node name="Camera3D2" type="Camera3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
-cull_mask = 8
 
 [node name="Soldier(pistolIdle)" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.265362, -0.120655, -0.206593)
