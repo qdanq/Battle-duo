@@ -149,39 +149,12 @@ func spawn_location():
 
 "
 
-[sub_resource type="Gradient" id="Gradient_m20ii"]
-offsets = PackedFloat32Array(0, 0.195122, 1)
-colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_aleu7"]
-gradient = SubResource("Gradient_m20ii")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nvnt8"]
-gravity = Vector3(0, 0, 0)
-color_ramp = SubResource("GradientTexture1D_aleu7")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qdq01"]
-transparency = 1
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.976471, 0.811765, 0.341176, 1)
-albedo_texture = ExtResource("2_er7t0")
-billboard_mode = 3
-particles_anim_h_frames = 1
-particles_anim_v_frames = 1
-particles_anim_loop = false
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_x7oop"]
-material = SubResource("StandardMaterial3D_qdq01")
-size = Vector2(0.2, 0.2)
-orientation = 2
-
 [sub_resource type="Animation" id="Animation_i50hr"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D/Pistol:position")
+tracks/0/path = NodePath("CanvasLayer/Camera3D/Pistol:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -193,7 +166,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D/Pistol:rotation")
+tracks/1/path = NodePath("CanvasLayer/Camera3D/Pistol:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -210,7 +183,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D/Pistol:position")
+tracks/0/path = NodePath("CanvasLayer/Camera3D/Pistol:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -222,7 +195,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D/Pistol:rotation")
+tracks/1/path = NodePath("CanvasLayer/Camera3D/Pistol:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -239,7 +212,7 @@ step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D/Pistol:position")
+tracks/0/path = NodePath("CanvasLayer/Camera3D/Pistol:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -255,7 +228,7 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D/Pistol:position")
+tracks/0/path = NodePath("CanvasLayer/Camera3D/Pistol:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -267,7 +240,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D/Pistol:rotation")
+tracks/1/path = NodePath("CanvasLayer/Camera3D/Pistol:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -301,6 +274,33 @@ properties/2/watch = false
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bgyhf"]
 
+[sub_resource type="Gradient" id="Gradient_m20ii"]
+offsets = PackedFloat32Array(0, 0.195122, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_aleu7"]
+gradient = SubResource("Gradient_m20ii")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nvnt8"]
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_aleu7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qdq01"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.976471, 0.811765, 0.341176, 1)
+albedo_texture = ExtResource("2_er7t0")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_x7oop"]
+material = SubResource("StandardMaterial3D_qdq01")
+size = Vector2(0.2, 0.2)
+orientation = 2
+
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 collision_layer = 2
@@ -310,29 +310,6 @@ script = SubResource("GDScript_8cwsq")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.265362, -0.120655, -0.206593)
 layers = 8
 mesh = ExtResource("1_bisgf")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.391177, 0.717609, -0.301653)
-cull_mask = 1048567
-
-[node name="Pistol" type="MeshInstance3D" parent="Camera3D"]
-transform = Transform3D(-3.61999e-07, 0, 0.1, 0, 0.1, 0, -0.1, 0, -3.61999e-07, 0.55674, -0.476864, -0.461548)
-mesh = ExtResource("1_qi2as")
-skeleton = NodePath("../..")
-
-[node name="MuzzleFlash" type="GPUParticles3D" parent="Camera3D/Pistol"]
-transform = Transform3D(1, 0, -2.13163e-14, 0, 1, 0, 9.9476e-14, 0, 1, 2.3715, 3.52466, -1.7944)
-emitting = false
-amount = 1
-lifetime = 0.2
-one_shot = true
-local_coords = true
-process_material = SubResource("ParticleProcessMaterial_nvnt8")
-draw_pass_1 = SubResource("PlaneMesh_x7oop")
-
-[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
-target_position = Vector3(0, 0, -50)
-collision_mask = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "idle"
@@ -356,5 +333,44 @@ stream = ExtResource("5_brkps")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.713857, 0, 0, 0, 1.44825, -0.272396, 0.568093, -0.292223)
 shape = SubResource("CapsuleShape3D_bgyhf")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CanvasLayer"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.301653, 0.717609, 0.391177)
+cull_mask = 1048567
+
+[node name="Pistol" type="MeshInstance3D" parent="CanvasLayer/Camera3D"]
+transform = Transform3D(-3.61999e-07, 0, 0.1, 0, 0.1, 0, -0.1, 0, -3.61999e-07, 0.55674, -0.476864, -0.461548)
+mesh = ExtResource("1_qi2as")
+skeleton = NodePath("../../..")
+
+[node name="MuzzleFlash" type="GPUParticles3D" parent="CanvasLayer/Camera3D/Pistol"]
+transform = Transform3D(1, 0, -2.13163e-14, 0, 1, 0, 9.9476e-14, 0, 1, 2.3715, 3.52466, -1.7944)
+emitting = false
+amount = 1
+lifetime = 0.2
+one_shot = true
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_nvnt8")
+draw_pass_1 = SubResource("PlaneMesh_x7oop")
+
+[node name="RayCast3D" type="RayCast3D" parent="CanvasLayer/Camera3D"]
+target_position = Vector3(0, 0, -50)
+collision_mask = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
+size = Vector2i(800, 600)
+
+[node name="Camera3D" type="Camera3D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
+cull_mask = 8
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
