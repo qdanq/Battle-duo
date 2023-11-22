@@ -308,11 +308,12 @@ script = SubResource("GDScript_8cwsq")
 
 [node name="Soldier(pistolIdle)" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.265362, -0.120655, -0.206593)
+layers = 8
 mesh = ExtResource("1_bisgf")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.391177, 0.717609, -0.301653)
-current = true
+cull_mask = 1048567
 
 [node name="Pistol" type="MeshInstance3D" parent="Camera3D"]
 transform = Transform3D(-3.61999e-07, 0, 0.1, 0, 0.1, 0, -0.1, 0, -3.61999e-07, 0.55674, -0.476864, -0.461548)
@@ -353,7 +354,7 @@ stream = ExtResource("4_n2qba")
 stream = ExtResource("5_brkps")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, -1.77636e-15, 0, 0.778908, 0, 0, 0, 0.487336, -0.272396, 0.568093, -0.189)
+transform = Transform3D(1, 0, 0, 0, 0.713857, 0, 0, 0, 1.44825, -0.272396, 0.568093, -0.292223)
 shape = SubResource("CapsuleShape3D_bgyhf")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
