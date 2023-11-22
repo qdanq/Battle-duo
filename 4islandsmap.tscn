@@ -95,6 +95,7 @@ skeleton = NodePath("../..")
 shape = SubResource("ConcavePolygonShape3D_iai4u")
 
 [node name="SpawnLocations" type="Node3D" parent="."]
+visible = false
 
 [node name="0" type="Node3D" parent="SpawnLocations" groups=["PlayerSpawnPoint"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.598, 148.188, -19.367)

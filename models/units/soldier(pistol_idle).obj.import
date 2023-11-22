@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ci2qypt2qeurm"
+path="res://.godot/imported/soldier(pistol_idle).obj-a52222b2ad543441097d951a4202a9b7.mesh"
+
+[deps]
+
+files=["res://.godot/imported/soldier(pistol_idle).obj-a52222b2ad543441097d951a4202a9b7.mesh"]
+
+source_file="res://models/units/soldier(pistol_idle).obj"
+dest_files=["res://.godot/imported/soldier(pistol_idle).obj-a52222b2ad543441097d951a4202a9b7.mesh", "res://.godot/imported/soldier(pistol_idle).obj-a52222b2ad543441097d951a4202a9b7.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
