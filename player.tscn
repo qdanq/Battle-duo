@@ -331,7 +331,7 @@ target_position = Vector3(0, 0, -50)
 collision_mask = 2
 
 [node name="Soldier(pistolIdle)" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.265362, -0.120655, -0.206593)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.265362, -0.959879, -0.206593)
 layers = 9
 mesh = ExtResource("1_bisgf")
 
