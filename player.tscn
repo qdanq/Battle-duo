@@ -122,7 +122,6 @@ func _on_animation_player_animation_finished(anim_name):
 
 func dead():
 	health -= 100
-	print(multiplayer.get_unique_id())
 	if health <= 0:
 		health = 100
 		position = Vector3(spawn_location())
@@ -309,7 +308,7 @@ script = SubResource("GDScript_8cwsq")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.391177, 0.717609, -0.301653)
-near = 0.4
+near = 0.216
 
 [node name="Pistol" type="MeshInstance3D" parent="Camera3D"]
 transform = Transform3D(-3.61999e-07, 0, 0.1, 0, 0.1, 0, -0.1, 0, -3.61999e-07, 0.55674, -0.476864, -0.461548)
